@@ -4,6 +4,9 @@
 Está api trata-se de uma biblioteca de livros
 Linguagem JavaScript usando API REST
 
+## Rodando o projeto
+- Use o comando `npm run dev`
+
 ## Requisitos
 
 - Node.js 22+
