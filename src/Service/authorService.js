@@ -1,11 +1,10 @@
-let authors = [];
+import * as repository from '../Repository/authorRepository.js'
 
-export const listAuthors = () => {
-  return authors
-}
+// export const listAuthors = () => {
+//   return authors
+// }
 
-export const createAuthors = (author) => {
-  console.log(author)
-  // authors.push(author)
-
+export const addAuthor = (author) => {
+  repository.insert(author)
+  return author
 }
