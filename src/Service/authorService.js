@@ -4,3 +4,8 @@ export const addAuthor = (author) => {
   repository.insert(author)
   return author
 }
+
+export const getAuthor = async () => {
+ const authors = await repository.findAll()
+  return authors
+}

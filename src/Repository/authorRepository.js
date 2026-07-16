@@ -11,3 +11,10 @@ export async function insert(author) {
 
   return result
 }
+
+export async function findAll() {
+  const [result] = await pool.query(
+    `SELECT * FROM authors`
+  );
+  return result
+}
