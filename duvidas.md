@@ -7,3 +7,15 @@ Nessa fase do projeto, como não encontrei artigos que fizesse com essa modelage
 
 Estou começando a parte de validação dos campos para inserir no banco de dados, encontrei um tutorial onde a pessoa utilizou o express-validator, pelo que entendi ele ainda é utilizado, então estou entendendo como funciona na documentação oficial.
   - Percebi que é mais complexo do que eu esperava, então optei por fazer uma validação de entrada mais simples
+  - Validações de entrada, como ser os dados existem ou estão corretos ficam no controller, validações da lógica, como por exemplo se o autor existe no banco, fica no service.
+
+
+  ### Dúvidas:
+
+  ## Diferença entre PUT e PATCH
+  O PUT atualiza o objeto inteiro, o PATCH substitui apenas um dado se necessário.
+
+
+  ### Testes falhados
+  Ao tentar criar um autor com a data incorreta, foi exibido a mensagem de "Autor cadastrado com sucesso!", porém não foi, foi barrado no sql.
+

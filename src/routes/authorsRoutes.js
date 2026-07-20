@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { listAuthors, createAuthors } from '../Controller/authorController.js';
+import { listAuthors, createAuthors, updateAuthors } from '../Controller/authorController.js';
 
 const router = Router();
 
 router.get('/', listAuthors);
 router.post('/', createAuthors);
-// router.put('/');
+router.put('/:id', updateAuthors);
 // router.patch('/');
 // router.delete('/');
 

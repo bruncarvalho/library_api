@@ -2,8 +2,8 @@ CREATE TABLE IF NOT EXISTS authors (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL UNIQUE,
   stage_name VARCHAR (100),
-  birth_year DATE NOT NULL,
-  date_of_death DATE,
+  birth_year SMALLINT NOT NULL,
+  date_of_death SMALLINT,
   PRIMARY KEY (id)
 );
 
