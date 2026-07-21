@@ -16,7 +16,7 @@ export async function findAll() {
   const [result] = await pool.query(
     `SELECT * FROM authors`
   );
-  return result //está retornando um array
+  return result
 }
 
 export async function findByName(name) {
@@ -29,6 +29,17 @@ export async function findByName(name) {
   return rows[0]
 }
 
+// export async function findById(id) {
+    
+//   const rows = await pool.query(
+//     `SELECT id
+//     from authors
+//     where id = ?`,
+//     [id]
+//   )
+//   return rows[0]
+// }
+
 export async function findById(id) {
     
   const rows = await pool.query(
@@ -39,6 +50,7 @@ export async function findById(id) {
   )
   return rows[0]
 }
+
 
 export async function updateAuthor(id, data) {
   const {name, stage_name, birth_year, date_of_death} = data
@@ -54,4 +66,13 @@ export async function updateAuthor(id, data) {
     [name || null, stage_name || null, birth_year|| null, date_of_death || null, id]
   );
   return result
+}
+
+export async function deleteAuthor(id) {
+  const [result] = await pool.query(
+      `DELETE FROM authors 
+      WHERE id = ?`,
+      [id]
+    );
+    return result
 }

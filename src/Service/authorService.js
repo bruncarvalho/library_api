@@ -24,18 +24,32 @@ export const getAuthors = async () => {
   return authors
 }
 
-export const getAuthorsById = async (id, data) => {
-  console.log('id no service:', id)
-
-  console.log('nome no service:', data)
+export const updateAuthorsById = async (id, data) => {
   const author = await repository.findById(id)
-  const {name, stage_name, birth_year, date_of_death} = data
 
-  if (!author) {
+  if (author.length === 0) {
     throw new Error('Autor não encontrado!')
   } 
 
   const updateAuthor = await repository.updateAuthor(id, data)
-    return updateAuthor
+
+  if(!updateAuthor.affectedRows) {
+    throw new Error('Autor não atualizado!')
+  }
+    return {
+    id,
+    ...data
+    }
+}
+
+export const deleteAuthor = async (id) => {
+  const author = await repository.findById(id)
+  console.log(author)
+  if (author.length === 0) {
+    throw new Error('Autor não encontrado!')
+  } 
+
+  const deleteAuthor = await repository.deleteAuthor(id)
+  return deleteAuthor
 }
 

@@ -12,7 +12,7 @@ export const createAuthors = async (req, res) => {
 
     await authorService.addAuthor(req.body)
     res.status(201).json(
-       {
+      {
         mensagem: "Autor cadastrado com sucesso!",
       }
     )
@@ -36,10 +36,24 @@ export const updateAuthors = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, stage_name, birth_year, date_of_death } = req.body;
-    const author = await authorService.getAuthorsById(id, req.body);
-    res.status(200).json(author);
+    await authorService.updateAuthorsById(id, req.body);
+    res.status(200).json({mensage: "Autor atualizado!"});
   } catch (e) {
     console.log(e);
     res.status(404).json(e.message)
   };
+}
+
+export const removeAuthor = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await authorService.deleteAuthor(id);
+    res.status(200).json(
+      {
+        mensagem: "Autor excluído com sucesso!",
+      }
+    )
+  } catch (e) {
+    res.status(404).json(e.message)
+  }
 }
