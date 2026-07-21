@@ -13,20 +13,20 @@ export async function insert(author) {
 }
 
 export async function findAll() {
-  const result = await pool.query(
+  const [result] = await pool.query(
     `SELECT * FROM authors`
   );
-  return result
+  return result //está retornando um array
 }
 
 export async function findByName(name) {
-  const rows = await pool.query(
+  const [rows] = await pool.query(
     `SELECT name 
     FROM authors
     where name = ?`,
     [name]
   );
-  return rows
+  return rows[0]
 }
 
 export async function findById(id) {
@@ -40,8 +40,8 @@ export async function findById(id) {
   return rows[0]
 }
 
-export async function updateAuthor(id, dados) {
-  const {name, stage_name, birth_year, date_of_death} = dados
+export async function updateAuthor(id, data) {
+  const {name, stage_name, birth_year, date_of_death} = data
   const result = await pool.query(
     `
     UPDATE authors 
