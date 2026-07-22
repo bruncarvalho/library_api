@@ -13,12 +13,13 @@ export const createAuthors = async (req, res) => {
     await authorService.addAuthor(req.body)
     res.status(201).json(
       {
-        mensagem: "Autor cadastrado com sucesso!",
+        mensagem: "Autor cadastrado com sucesso!"
       }
     )
 
   } catch (e) {
-    res.status(404).json(e.message)
+    console.log(e)
+    res.status(e.cause?.status || 500).json(e.message)
   }
 }
 

@@ -15,4 +15,3 @@ CREATE TABLE IF NOT EXISTS books (
   CONSTRAINT fk_books_author FOREIGN KEY (author_id) REFERENCES authors (id),
   PRIMARY KEY (id)
 );
-

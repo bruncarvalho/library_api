@@ -3,10 +3,15 @@ import { listAuthors, createAuthors, updateAuthors, removeAuthor } from '../Cont
 
 const router = Router();
 
+//Rota para autores
 router.get('/', listAuthors);
 router.post('/', createAuthors);
 router.put('/:id', updateAuthors);
 // router.patch('/');
 router.delete('/:id', removeAuthor);
+
+//Rota para os livros
+// router.post('/', createBook);
+
 
 export default router;

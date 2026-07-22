@@ -29,20 +29,9 @@ export async function findByName(name) {
   return rows[0]
 }
 
-// export async function findById(id) {
-    
-//   const rows = await pool.query(
-//     `SELECT id
-//     from authors
-//     where id = ?`,
-//     [id]
-//   )
-//   return rows[0]
-// }
-
 export async function findById(id) {
     
-  const rows = await pool.query(
+  const [rows] = await pool.query(
     `SELECT id
     from authors
     where id = ?`,
@@ -54,7 +43,7 @@ export async function findById(id) {
 
 export async function updateAuthor(id, data) {
   const {name, stage_name, birth_year, date_of_death} = data
-  const result = await pool.query(
+  const [result] = await pool.query(
     `
     UPDATE authors 
     SET name = COALESCE(?, name), 
@@ -65,7 +54,7 @@ export async function updateAuthor(id, data) {
     `,
     [name || null, stage_name || null, birth_year|| null, date_of_death || null, id]
   );
-  return result
+  return [result][0]
 }
 
 export async function deleteAuthor(id) {
