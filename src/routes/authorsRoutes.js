@@ -10,8 +10,4 @@ router.put('/:id', updateAuthors);
 // router.patch('/');
 router.delete('/:id', removeAuthor);
 
-//Rota para os livros
-// router.post('/', createBook);
-
-
 export default router;

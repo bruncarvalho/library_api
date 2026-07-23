@@ -31,3 +31,38 @@ export async function findByidAuthor(book) {
   );
   return rows[0]
 }
+
+export async function findById(id) {
+  const [rows] = await pool.query(
+    `
+    SELECT id
+    from books
+    where id = ?`,
+    [id]
+  )
+  return rows[0]
+}
+
+export async function updateBook (id, data) {
+  const { author_id, title, year_of_publication } = data
+  const [result] = await pool.query(
+    `
+    UPDATE books
+    SET author_id = COALESCE(?, author_id), 
+    title = COALESCE(?, title), 
+    year_of_publication = COALESCE(?, year_of_publication)
+    where id = ?`,
+    [author_id || null, title || null, year_of_publication|| null, id]
+  );
+  return [result][0]
+}
+
+export async function deleteBook(id) {
+  const [result] = await pool.query(
+    `
+    DELETE FROM books
+    WHERE id = ?`,
+    [id]
+  );
+  return result
+}
